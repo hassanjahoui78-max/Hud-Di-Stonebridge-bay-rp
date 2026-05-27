@@ -1,0 +1,60 @@
+/* ================= BASE ================= */
+body {
+    margin: 0; padding: 0; width: 100vw; height: 100vh;
+    background: transparent; /* SFONDO TRASPARENTE PER IL GIOCO */
+    font-family: 'Montserrat', sans-serif; overflow: hidden; color: white;
+}
+
+:root { --main-orange: #ff9f43; --dark-bg: rgba(20, 20, 25, 0.85); --glass: rgba(0,0,0,0.5); }
+
+/* (INCOLLA QUI IL RESTO DEL CSS ESATTO DEL MIO MESSAGGIO PRECEDENTE) */
+/* (Inizia da #player-info e arriva fino in fondo) */
+
+#player-info { position: absolute; top: 20px; right: 20px; display: flex; gap: 15px; align-items: flex-start; }
+.info-col { display: flex; flex-direction: column; gap: 8px; align-items: flex-end;}
+.info-box { background: var(--dark-bg); border-left: 3px solid var(--main-orange); padding: 8px 15px; border-radius: 4px; display: flex; align-items: center; gap: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); font-size: 14px; min-width: 150px; }
+.info-box i { color: var(--main-orange); font-size: 16px; width: 20px; text-align: center;}
+.logo-box { width: 80px; height: 80px; background: var(--dark-bg); border-radius: 8px; display: flex; align-items: center; justify-content: center; border: 2px solid var(--main-orange); box-shadow: 0 4px 10px rgba(255, 159, 67, 0.2); }
+.logo-box i { font-size: 35px; color: var(--main-orange); }
+
+#bottom-left-hud { position: absolute; bottom: 30px; left: 30px; display: flex; flex-direction: column; gap: 15px; }
+.compass-container { background: var(--dark-bg); padding: 8px 15px; border-radius: 8px; display: flex; align-items: center; gap: 10px; border-bottom: 2px solid var(--main-orange); font-weight: bold; font-size: 18px; width: max-content; }
+.compass-heading { color: var(--main-orange); font-size: 20px;}
+.street-name { font-size: 14px; color: #ddd; }
+
+.status-container { display: flex; gap: 10px; }
+.status-item { width: 45px; height: 45px; background: var(--glass); position: relative; display: flex; justify-content: center; align-items: center; overflow: hidden; border: 2px solid rgba(255,255,255,0.1); transition: 0.3s; }
+.status-item i { z-index: 10; font-size: 16px; color: white; text-shadow: 0 0 5px black; }
+
+.shape-circle { border-radius: 50%; }
+.shape-square { border-radius: 8px; }
+
+.fill-solid .status-bg { position: absolute; bottom: 0; left: 0; width: 100%; transition: 0.3s; }
+.fill-liquid .status-bg { position: absolute; bottom: 0; left: 0; width: 100%; background: transparent !important; }
+.fill-liquid .status-bg::before { content: ''; position: absolute; top: 0; left: -50%; width: 200%; height: 200%; background: inherit; border-radius: 40%; animation: wave 4s infinite linear; }
+@keyframes wave { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+#health .status-bg, #health .status-bg::before { background: #2ecc71; }
+#armor .status-bg, #armor .status-bg::before { background: #3498db; }
+#hunger .status-bg, #hunger .status-bg::before { background: #e67e22; }
+#thirst .status-bg, #thirst .status-bg::before { background: #0984e3; }
+#stress .status-bg, #stress .status-bg::before { background: #e74c3c; }
+
+#speedometer { position: absolute; bottom: 30px; right: 30px; background: var(--dark-bg); border-radius: 50%; width: 200px; height: 200px; display: flex; flex-direction: column; justify-content: center; align-items: center; border: 2px solid rgba(255,255,255,0.05); box-shadow: 0 10px 20px rgba(0,0,0,0.5); transition: opacity 0.5s, transform 0.5s; }
+.hidden { opacity: 0; transform: translateY(50px); pointer-events: none; }
+.speed-text { font-size: 55px; font-weight: 700; font-style: italic; line-height: 0.9; }
+.kmh { font-size: 14px; color: #888; font-weight: bold; letter-spacing: 2px;}
+
+.vehicle-icons { display: flex; gap: 15px; margin-top: 15px; }
+.v-icon { font-size: 18px; color: white; transition: 0.3s; }
+.seatbelt.on { color: #2ecc71; }
+.seatbelt.off { color: #e74c3c; animation: flash 1s infinite; }
+.fuel { color: var(--main-orange); }
+
+@keyframes flash { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+#settings-menu { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: var(--dark-bg); padding: 25px; border-radius: 8px; border: 1px solid var(--main-orange); display: none; flex-direction: column; gap: 15px; width: 300px; z-index: 100; }
+#settings-menu h2 { margin: 0; color: var(--main-orange); text-align: center; }
+.setting-row { display: flex; justify-content: space-between; align-items: center;}
+select { background: #333; color: white; border: none; padding: 5px; border-radius: 4px; outline:none;}
+.close-btn { background: var(--main-orange); color: black; border: none; padding: 8px; font-weight: bold; cursor: pointer; border-radius: 4px; margin-top: 10px;}
