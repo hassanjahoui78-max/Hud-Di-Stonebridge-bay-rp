@@ -1,4 +1,4 @@
-local QBCore = exports['qb-core']:GetCoreObject()
+local Player = exports.qbx_core:GetPlayer(source)
 
 hidehudcomponents(2) -- armi
 
